@@ -20,12 +20,14 @@ class Config:
         self.interactions_ = os.path.join(self.warehouse, 'interactions')
         self.data_ = os.path.join(os.getcwd(), 'data')
 
-        # Temporary; future argument, or auto determination.
-        self.device = 'cpu'
-
         # Amazon
         self.s3_parameters_key = 's3_parameters.yaml'
-        self.arguments_key = 'bare/arguments.json'
+        self.arguments_key = 'interface-internal/arguments.json'
+        self.prefix_origin = 'warehouse/metrics/best'
+
+        # Project metadata
+        self.project_tag = 'few'
+        self.project_key_name = 'FNTC'
 
         # Examples
         self.examples = [
