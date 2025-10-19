@@ -20,12 +20,13 @@ class Future:
     A set-up that allows for custom interface options.
     """
 
-    def __init__(self, service: sr.Service, s3_parameters: s3p.S3Parameters):
+    def __init__(self, service: sr.Service, s3_parameters: s3p.S3Parameters, arguments: dict):
         """
 
         :param service: A suite of services for interacting with Amazon Web Services.
         :param s3_parameters: The overarching S3 (Simple Storage Service) parameters
                               settings of this project, e.g., region code name, buckets, etc.
+        :param arguments: A set of arguments vis-à-vis calculation, interface, and storage objectives.
         """
 
         self.__service: sr.Service = service
@@ -39,7 +40,7 @@ class Future:
         # noinspection PyTypeChecker
         self.__classifier = transformers.pipeline(
             task='ner', model=os.path.join(self.__configurations.data_, 'model'),
-            device=self.__configurations.device)
+            device=arguments.get('device'))
 
     def __custom(self, text):
         """
