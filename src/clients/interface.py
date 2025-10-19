@@ -15,16 +15,18 @@ class Interface:
     Offers interaction interfaces.
     """
 
-    def __init__(self, service: sr.Service, s3_parameters: s3p.S3Parameters):
+    def __init__(self, service: sr.Service, s3_parameters: s3p.S3Parameters, arguments: dict):
         """
 
         :param service: A suite of services for interacting with Amazon Web Services.
         :param s3_parameters: The overarching S3 (Simple Storage Service) parameters
                               settings of this project, e.g., region code name, buckets, etc.
+        :param arguments: A set of arguments vis-à-vis calculation, interface, and storage objectives.
         """
 
         self.__service: sr.Service = service
         self.__s3_parameters: s3p.S3Parameters = s3_parameters
+        self.__arguments: dict = arguments
 
         # Logging
         logging.basicConfig(level=logging.INFO,
@@ -43,12 +45,13 @@ class Interface:
 
         match client:
             case 'basic':
-                src.clients.basic.Basic().exc()
+                src.clients.basic.Basic(arguments=self.__arguments).exc()
             case 'cli':
-                src.clients.cli.CLI().exc()
+                src.clients.cli.CLI(arguments=self.__arguments).exc()
             case 'future':
-                src.clients.future.Future(service=self.__service, s3_parameters=self.__s3_parameters).exc()
+                src.clients.future.Future(
+                    service=self.__service, s3_parameters=self.__s3_parameters, arguments=self.__arguments).exc()
             case 'initial':
-                src.clients.initial.Initial().exc()
+                src.clients.initial.Initial(arguments=self.__arguments).exc()
             case _:
                 return 'Unknown'
