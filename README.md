@@ -10,16 +10,16 @@ The tags are
 
 <br>
 
-| tags         | definition                                                                            |
-|:-------------|:--------------------------------------------------------------------------------------|
-| art          | Art                                                                                   |
-| building     | A building                                                                            |
-| event        | An event                                                                              |
-| gpe          | Geo-political entities, citizenship, nationality, place, <br>islands, mountains, etc. |
-| organisation | Organisation                                                                          |
-| person       | Person                                                                                |
-| weapon       | Weapon                                                                                |
-| O            | Miscellaneous/Other                                                                   |
+| tags         | definition                                                                                               |
+|:-------------|:---------------------------------------------------------------------------------------------------------|
+| art          | Art                                                                                                      |
+| building     | A building                                                                                               |
+| event        | An event                                                                                                 |
+| gpe          | A geo-political entity; including, country, citizenship, nationality, <br>region, island, mountain, etc. |
+| organisation | Organisation                                                                                             |
+| person       | Person                                                                                                   |
+| weapon       | Weapon                                                                                                   |
+| O            | Miscellaneous/Other                                                                                      |
 
 <br>
 <br>
