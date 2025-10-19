@@ -12,7 +12,7 @@ The tags are
 
 | tags         | definition                                                                                               |
 |:-------------|:---------------------------------------------------------------------------------------------------------|
-| art          | Art                                                                                                      |
+| art          | A piece of art                                                                                           |
 | building     | A building                                                                                               |
 | event        | An event                                                                                                 |
 | gpe          | A geo-political entity; including, country, citizenship, nationality, <br>region, island, mountain, etc. |
