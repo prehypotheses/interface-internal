@@ -17,18 +17,19 @@ class Initial:
     because the underlying software allows for extensive customisation.
     """
 
-    def __init__(self):
+    def __init__(self, arguments: dict):
         """
 
-        Constructor
+        :param arguments: A set of arguments vis-à-vis calculation, interface, and storage objectives.
         """
 
         self.__configurations = config.Config()
 
         # Pipeline
+        # noinspection PyTypeChecker
         self.__classifier = transformers.pipeline(
             task='ner', model=os.path.join(self.__configurations.data_, 'model'),
-            device=self.__configurations.device)
+            device=arguments.get('device'))
 
     def __custom(self, paragraph):
         """
