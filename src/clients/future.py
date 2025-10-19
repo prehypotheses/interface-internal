@@ -20,12 +20,13 @@ class Future:
     A set-up that allows for custom interface options.
     """
 
-    def __init__(self, service: sr.Service, s3_parameters: s3p.S3Parameters):
+    def __init__(self, service: sr.Service, s3_parameters: s3p.S3Parameters, arguments: dict):
         """
 
         :param service: A suite of services for interacting with Amazon Web Services.
         :param s3_parameters: The overarching S3 (Simple Storage Service) parameters
                               settings of this project, e.g., region code name, buckets, etc.
+        :param arguments: A set of arguments vis-à-vis calculation, interface, and storage objectives.
         """
 
         self.__service: sr.Service = service
@@ -39,7 +40,7 @@ class Future:
         # noinspection PyTypeChecker
         self.__classifier = transformers.pipeline(
             task='ner', model=os.path.join(self.__configurations.data_, 'model'),
-            device=self.__configurations.device)
+            device=arguments.get('device'))
 
     def __custom(self, text):
         """
@@ -85,8 +86,8 @@ class Future:
 
             gradio.Markdown(value=('<h1>Token Classification</h1><br><b>An illustrative interactive interface; the '
                                    'interface software allows for advanced interfaces.</b><br>The classes are '
-                                   '<b>art</b>, <b>building</b>, <b>event</b>, <b>location</b>, <b>organisation</b>, '
-                                   'and <b>product-weapon</b>.'), line_breaks=True)
+                                   '<b>art</b>, <b>building</b>, <b>event</b>, <b>gpe</b> (geo-political entity), '
+                                   '<b>organisation</b>, and <b>weapon</b>.'), line_breaks=True)
 
             with gradio.Row():
                 with gradio.Column(scale=3):

@@ -4,6 +4,7 @@ import json
 import boto3
 import yaml
 
+import config
 import src.functions.secret
 import src.s3.unload
 
@@ -22,6 +23,8 @@ class Configurations:
         :param connector: An instance of boto3.session.Session
         """
 
+        self.__project_key_name = config.Config().project_key_name
+
         # An instance for S3 interactions
         self.__s3_client: boto3.session.Session.client = connector.client(
             service_name='s3')
@@ -37,7 +40,7 @@ class Configurations:
         """
 
         buffer = src.s3.unload.Unload(s3_client=self.__s3_client).exc(
-            bucket_name=self.__secret.exc(secret_id='FNTC', node='configurations'),
+            bucket_name=self.__secret.exc(secret_id=self.__project_key_name, node='configurations'),
             key_name=key_name)
 
         return buffer

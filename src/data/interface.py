@@ -26,6 +26,9 @@ class Interface:
         self.__s3_parameters: s3p.S3Parameters = s3_parameters
         self.__source_bucket = self.__s3_parameters.external
 
+        # Configurations
+        self.__configurations = config.Config()
+
         # Directives
         self.__directives = src.s3.directives.Directives()
 
@@ -50,8 +53,8 @@ class Interface:
         try:
             state = self.__get_assets(
                 source_bucket=self.__source_bucket,
-                origin='warehouse/numerics/best',
-                target=config.Config().data_)
+                origin=self.__configurations.prefix_origin,
+                target=self.__configurations.data_)
         except RuntimeError as err:
             raise err from err
 

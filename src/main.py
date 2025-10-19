@@ -21,7 +21,8 @@ def main():
         src.data.interface.Interface(s3_parameters=s3_parameters).exc()
 
     # Explore/Interact
-    src.clients.interface.Interface(service=service, s3_parameters=s3_parameters).exc(client='future')
+    src.clients.interface.Interface(
+        service=service, s3_parameters=s3_parameters, arguments=arguments).exc(client='future')
 
     # Delete Cache Points
     src.functions.cache.Cache().exc()
